@@ -4,10 +4,10 @@ package test;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.awt.Robot;
 
 class Stack{
 	String[] arr;
-	int head = 0;
 	int tail = 0;
 	int size = 0;
 	
@@ -39,15 +39,12 @@ class Stack{
 	}
 	public boolean ifZero() {
 		//是否栈空
-		return head == tail;
+		return size == tail;
 	}
 	
 	public String See() {
-		//if(ifZero()) {
-			
-			
-		//}
-		return arr[tail];
+		
+		return arr[tail-1];
 	}
 	
 	public String Pop() {
@@ -55,8 +52,8 @@ class Stack{
 		if(ifZero()) {
 			return "栈空，无法出栈";
 		}else {
-			head+=1;
-			return arr[head-1];
+			tail-=1;
+			return arr[tail+1];
 		}
 		
 	}
