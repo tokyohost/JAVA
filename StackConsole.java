@@ -4,12 +4,10 @@ package test;
 
 import java.util.Arrays;
 import java.util.Scanner;
-import java.awt.Robot;
 
 class Stack{
 	String[] arr;
 	int tail = 0;
-	int size = 0;
 	
 	public void Size(int size) {
 		this.size = size;
@@ -22,7 +20,7 @@ class Stack{
 		if(ifOver()) {
 			//拷贝数组，添加长度
 			arr = Arrays.copyOf(arr, arr.length*2);
-			this.size = arr.length;
+			
 			arr[tail] = intext;
 			tail=tail+1;
 		}else {
@@ -34,12 +32,12 @@ class Stack{
 	}
 	public boolean ifOver() {
 		//是否栈满
-		return tail == size;
+		return tail == arr.length;
 		
 	}
 	public boolean ifZero() {
 		//是否栈空
-		return size == tail;
+		return 0 == tail;
 	}
 	
 	public String See() {
