@@ -1,6 +1,4 @@
-//å¯¹æ ˆè¿›è¡Œæ§åˆ¶å°æ“ä½œ
-
-package test;
+//¶ÔÕ»½øĞĞ¿ØÖÆÌ¨²Ù×÷
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,15 +8,13 @@ class Stack{
 	int tail = 0;
 	
 	public void Size(int size) {
-		this.size = size;
-		
 		arr = new String[size];
 		
 	}
 	
 	public void Push(String intext) {
 		if(ifOver()) {
-			//æ‹·è´æ•°ç»„ï¼Œæ·»åŠ é•¿åº¦
+			//¿½±´Êı×é£¬Ìí¼Ó³¤¶È
 			arr = Arrays.copyOf(arr, arr.length*2);
 			
 			arr[tail] = intext;
@@ -31,27 +27,30 @@ class Stack{
 		
 	}
 	public boolean ifOver() {
-		//æ˜¯å¦æ ˆæ»¡
+		//ÊÇ·ñÕ»Âú
 		return tail == arr.length;
 		
 	}
 	public boolean ifZero() {
-		//æ˜¯å¦æ ˆç©º
+		//ÊÇ·ñÕ»¿Õ
 		return 0 == tail;
 	}
 	
 	public String See() {
-		
-		return arr[tail-1];
+		if(ifZero()) {
+			return "Õ»¿Õ£¬Õ»¶¥ÔªËØÎª¿Õ";
+		}else {
+			return arr[tail-1];
+		}
 	}
 	
 	public String Pop() {
 		
 		if(ifZero()) {
-			return "æ ˆç©ºï¼Œæ— æ³•å‡ºæ ˆ";
+			return "Õ»¿Õ£¬ÎŞ·¨³öÕ»";
 		}else {
-			tail-=1;
-			return arr[tail+1];
+			tail=tail-1;
+			return arr[tail];
 		}
 		
 	}
@@ -61,11 +60,11 @@ class Stack{
 	
 	public void show() {
 		System.out.println("----------------------");
-		System.out.println("1.å…¥æ ˆ");
-		System.out.println("2.å‡ºæ ˆ");
-		System.out.println("3.æŸ¥çœ‹æ ˆé¡¶å…ƒç´ ");
-		System.out.println("4.æŸ¥çœ‹æ ˆé•¿åº¦");
-		System.out.println("5.é€€å‡º");
+		System.out.println("1.ÈëÕ»");
+		System.out.println("2.³öÕ»");
+		System.out.println("3.²é¿´Õ»¶¥ÔªËØ");
+		System.out.println("4.²é¿´Õ»³¤¶È");
+		System.out.println("5.ÍË³ö");
 		System.out.println("----------------------");
 		
 	}
@@ -87,27 +86,27 @@ public class Demo {
 		do {
 			menu.show();
 			
-			System.out.println("è¯·è¾“å…¥éœ€è¦è¿›è¡Œçš„æ“ä½œï¼š");
+			System.out.println("ÇëÊäÈëĞèÒª½øĞĞµÄ²Ù×÷£º");
 			num = sc.nextInt();
 			
 			switch(num) {
 			 case 1:{
-				 System.out.println("è¯·è¾“å…¥éœ€è¦å…¥æ ˆçš„æ•°æ®ï¼š");
+				 System.out.println("ÇëÊäÈëĞèÒªÈëÕ»µÄÊı¾İ£º");
 				 text = sc.next();
 				 stack.Push(text);
 				 break;
 			 }
 			 case 2:{
-				 System.out.println("å‡ºæ ˆçš„å…ƒç´ ä¸ºï¼š"+stack.Pop());
+				 System.out.println("³öÕ»µÄÔªËØÎª£º"+stack.Pop());
 				 break;
 			 }
 			 case 3:{
-				 System.out.println("æ ˆé¡¶çš„æ•°æ®ï¼š"+stack.See());
+				 System.out.println("Õ»¶¥µÄÊı¾İ£º"+stack.See());
 				 
 				 break;
 			 }
 			 case 4:{
-				 System.out.println("æ ˆé•¿åº¦ä¸ºï¼š"+stack.size);
+				 System.out.println("Õ»³¤¶ÈÎª£º"+stack.arr.length);
 				 
 				 break;
 			 }
